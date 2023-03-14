@@ -16,10 +16,57 @@
 #include "push_swap.h"
 
 
+void free_malloc(char **p)
+{
+    int x = 0;
+    while(p[x])
+        free(p[x++]);
+    free(p);
+}
 void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
 {
-    int x = ft_word(av[2], ' ');
-    printf("%d", x);
+    int x = 1;
+    int y = 0;
+    int i = 0;
+    char **split;
+    while(x < ac)
+    {
+        a->len = ft_word(av[x], ' ');
+        x++;
+    }
+    write(1, , 2);
+    a->arr = (int *)malloc(sizeof(int) * (a->len));
+    // b->arr = (int *)malloc(sizeof(int) * (a->len));
+    x = 0;
+    write(1, "8\n", 2);
+    write(1, "1\n", 2);
+    while(x < ac)
+    {
+        b->len = ft_word(av[x], ' ');
+        if(b->len == 1)
+            a->arr[i++] = ft_atoi(av[x]);
+        else
+        {
+            write(1, "1\n", 2);
+            split = ft_split(av[x], ' ');
+            y = 0;
+            while(split[y])
+            {
+                write(1, "2\n", 2);
+                a->arr[i] = ft_atoi(split[y]);
+                write(1, "3\n", 2);
+                i++;
+                y++;
+            }
+            free_malloc(split);
+        }
+        x++;
+        b->len = 0;
+    }
+    x = 0;
+    while(x < 10)
+        printf("%d\n", a->arr[x]);
+    free(a->arr);
 }
 
 
