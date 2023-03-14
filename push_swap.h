@@ -6,22 +6,23 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:01:53 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/11 01:45:00 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:55:23 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP
 #define PUSH_SWAP
 
-int check(char *p);
+#include "./libft/libft.h"
 
-struct  s_stack
+typedef struct  s_stack
 {
-    int *arc;
+    int *arr;
     int len;
 }   t_stack;
 
 
-#include "./libft/libft.h"
+int check(int len, char **p);
+void malloc_stack(t_stack *a, t_stack *b, int ac, char **av);
 
 #endif

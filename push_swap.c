@@ -6,13 +6,22 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:26:03 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/11 21:18:40 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:56:51 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <stdio.h>
 #include <unistd.h>
+#include "push_swap.h"
+
+
+void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
+{
+    int x = ft_word(av[2], ' ');
+    printf("%d", x);
+}
+
 
 int check(int len, char **p)
 {
@@ -43,6 +52,9 @@ int check(int len, char **p)
 
 int main(int ac, char **av)
 {
+    t_stack *a;
+    t_stack *b;
+
     int x;
     if(ac > 1)
     {
@@ -52,6 +64,10 @@ int main(int ac, char **av)
             write(1, "error", 5);
             return 0;
         }
+        else
+            {
+                malloc_stack(a , b, ac, av);
+            }
     }
     return 0;
 }

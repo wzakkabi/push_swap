@@ -10,8 +10,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar -rcs swap.a $(OBJ)
-	gcc $(FLAGS) swap.a libft.a -o $(NAME)
+	gcc *.c libft.a -o $(NAME)
 
 %.o : %.c
 	gcc $(FLAGS) -c $<
