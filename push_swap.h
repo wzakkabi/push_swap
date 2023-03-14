@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP
 #define PUSH_SWAP
 
-#include "./libft/libft.h"
+#include "./ll/libft.h"
 
 typedef struct  s_stack
 {
