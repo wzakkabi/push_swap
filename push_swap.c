@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:26:03 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/14 01:56:51 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/15 01:05:21 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,12 @@ void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
     char **split;
     while(x < ac)
     {
-        a->len = ft_word(av[x], ' ');
+        a->len = ft_word(av[x], ' ') + a->len;
         x++;
     }
-    write(1, , 2);
     a->arr = (int *)malloc(sizeof(int) * (a->len));
-    // b->arr = (int *)malloc(sizeof(int) * (a->len));
-    x = 0;
-    write(1, "8\n", 2);
-    write(1, "1\n", 2);
+    b->arr = (int *)malloc(sizeof(int) * (a->len));
+    x = 1;
     while(x < ac)
     {
         b->len = ft_word(av[x], ' ');
@@ -47,14 +44,11 @@ void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
             a->arr[i++] = ft_atoi(av[x]);
         else
         {
-            write(1, "1\n", 2);
             split = ft_split(av[x], ' ');
             y = 0;
             while(split[y])
             {
-                write(1, "2\n", 2);
                 a->arr[i] = ft_atoi(split[y]);
-                write(1, "3\n", 2);
                 i++;
                 y++;
             }
@@ -64,9 +58,6 @@ void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
         b->len = 0;
     }
     x = 0;
-    while(x < 10)
-        printf("%d\n", a->arr[x]);
-    free(a->arr);
 }
 
 
@@ -99,8 +90,8 @@ int check(int len, char **p)
 
 int main(int ac, char **av)
 {
-    t_stack *a;
-    t_stack *b;
+    t_stack a;
+    t_stack b;
 
     int x;
     if(ac > 1)
@@ -113,8 +104,9 @@ int main(int ac, char **av)
         }
         else
             {
-                malloc_stack(a , b, ac, av);
+                malloc_stack(&a , &b, ac, av);
             }
+            x = 0;
     }
     return 0;
 }
