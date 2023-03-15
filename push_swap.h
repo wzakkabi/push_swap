@@ -14,6 +14,8 @@
 #define PUSH_SWAP
 
 #include "./ll/libft.h"
+#include <stdio.h>
+#include <unistd.h>
 
 typedef struct  s_stack
 {
@@ -24,5 +26,9 @@ typedef struct  s_stack
 
 int check(int len, char **p);
 void malloc_stack(t_stack *a, t_stack *b, int ac, char **av);
+void    sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
+void	pa(t_stack *a, t_stack *b);
 
 #endif

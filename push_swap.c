@@ -11,8 +11,7 @@
 /* ************************************************************************** */
 
 
-#include <stdio.h>
-#include <unistd.h>
+
 #include "push_swap.h"
 
 
@@ -23,19 +22,21 @@ void free_malloc(char **p)
         free(p[x++]);
     free(p);
 }
+
 void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
 {
     int x = 1;
     int y = 0;
     int i = 0;
+    int line_stack = 0;
     char **split;
     while(x < ac)
     {
-        a->len = ft_word(av[x], ' ') + a->len;
+        line_stack = ft_word(av[x], ' ') + line_stack;
         x++;
     }
-    a->arr = (int *)malloc(sizeof(int) * (a->len));
-    b->arr = (int *)malloc(sizeof(int) * (a->len));
+    a->arr = (int *)malloc(sizeof(int) * (line_stack));
+    b->arr = (int *)malloc(sizeof(int) * (line_stack));
     x = 1;
     while(x < ac)
     {
@@ -57,7 +58,12 @@ void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
         x++;
         b->len = 0;
     }
-    x = 0;
+    a->len = line_stack;
+    b->len = 3;
+    b->arr[0] = 5;
+    b->arr[1] = 9;
+    b->arr[2] = 7;
+    pa(a, b);
 }
 
 
