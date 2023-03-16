@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:07:03 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/16 01:29:22 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/16 01:29:37 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void pb(t_stack *a, t_stack *b)
 {
 	int x;
 	int swap;
-	printf("a-> %d\n", b->len);
 	if(a->len >= 1)
 	{
 		swap = b->arr[0];
@@ -94,7 +93,4 @@ void pb(t_stack *a, t_stack *b)
 		b->arr[1] = swap;
 		a->len--;
 	}
-	x = 0;
-	printf("a-> %d\n", b->len);
-	
 }
