@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:07:03 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/11 21:20:07 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/16 01:29:22 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,12 @@ void	ss(t_stack *a, t_stack *b)
 
 void	pa(t_stack *a, t_stack *b)
 {
-	int x = a->len - 1;
-	if(b->len > 1)
+	int x;
+	int swap;
+	if(b->len >= 1)
 	{
+		swap = a->arr[0];
+		x = a->len - 1;
 		while(x != 0)
 		{
 			a->arr[x + 1] = a->arr[x];
@@ -61,14 +64,37 @@ void	pa(t_stack *a, t_stack *b)
 			b->arr[x] = b->arr[x + 1];
 			x++;
 		}
+		a->arr[1] = swap;
 		b->len--;
 	}
+}
+
+void pb(t_stack *a, t_stack *b)
+{
+	int x;
+	int swap;
+	printf("a-> %d\n", b->len);
+	if(a->len >= 1)
+	{
+		swap = b->arr[0];
+		x = b->len - 1;
+		while(x != 0)
+		{
+			b->arr[x + 1] = b->arr[x];
+			x--;
+		}
+		b->arr[0] = a->arr[0];
+		b->len++;
+		x = 0;
+		while(x < a->len)
+		{
+			a->arr[x] = a->arr[x + 1];
+			x++;
+		}
+		b->arr[1] = swap;
+		a->len--;
+	}
 	x = 0;
-	while(x < a->len)
-		printf("a->arr =%d\n", a->arr[x++]);
-	printf("a-len  = %d\n", a->len);
-	printf("b-len = %d\n", b->len);
-	x = 0;
-	while(x < b->len)
-		printf("b->arr = %d\n", b->arr[x++]);
+	printf("a-> %d\n", b->len);
+	
 }

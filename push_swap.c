@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:26:03 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/15 01:05:21 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/16 01:23:51 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
     b->arr[0] = 5;
     b->arr[1] = 9;
     b->arr[2] = 7;
-    pa(a, b);
+    pb(a, b);
 }
 
 
