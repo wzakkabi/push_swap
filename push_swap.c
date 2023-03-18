@@ -25,46 +25,31 @@ void free_malloc(char **p)
 
 void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
 {
-    int x = 1;
-    int y = 0;
-    int i = 0;
-    char **split;
-    
+    t_cnt   cnt;
+    char    **split;
+
+    cnt.x = ((cnt.y = 0),(cnt.i = 0), 0);
     a->len = 0;
-    while(x < ac)
-    {
-        a->len = ft_word(av[x], ' ') + a->len;
-        x++;
-    }
+    while(++cnt.x < ac)
+        a->len = ft_word(av[cnt.x], ' ') + a->len;
     a->arr = (int *)malloc(sizeof(int) * (a->len));
     b->arr = (int *)malloc(sizeof(int) * (a->len));
-    x = 1;
-    while(x < ac)
+    cnt.x = -1;
+    while(++cnt.x < ac)
     {
-        b->len = ft_word(av[x], ' ');
+        b->len = ft_word(av[cnt.x], ' ');
         if(b->len == 1)
-            a->arr[i++] = ft_atoi(av[x]);
+            a->arr[cnt.i++] = ft_atoi(av[cnt.x]);
         else
         {
-            split = ft_split(av[x], ' ');
-            y = 0;
-            while(split[y])
-            {
-                a->arr[i] = ft_atoi(split[y]);
-                i++;
-                y++;
-            }
+            split = ft_split(av[cnt.x], ' ');
+            cnt.y = -1;
+            while(split[++cnt.y])
+                a->arr[cnt.i++] = ft_atoi(split[cnt.y]);
             free_malloc(split);
         }
-        x++;
         b->len = 0;
     }
-    b->len = 4;
-    b->arr[0] = 1;
-    b->arr[1] = 2;
-    b->arr[2] = 3;
-    b->arr[3] = 4;
-    rb(b);
 }
 
 

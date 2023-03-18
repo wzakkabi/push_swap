@@ -19,19 +19,30 @@
 
 typedef struct  s_stack
 {
-    int *arr;
-    int len;
+	int *arr;
+	int len;
 }   t_stack;
 
+typedef struct  s_cnt
+{
+	int x;
+	int y;
+	int i;
+}   t_cnt;
 
-void ra(t_stack *a);
-void rb(t_stack *b);
-int check(int len, char **p);
-void malloc_stack(t_stack *a, t_stack *b, int ac, char **av);
+
 void    sa(t_stack *a);
 void	sb(t_stack *b);
 void	ss(t_stack *a, t_stack *b);
 void	pa(t_stack *a, t_stack *b);
 void    pb(t_stack *a, t_stack *b);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
+void	malloc_stack(t_stack *a, t_stack *b, int ac, char **av);
+int		check(int len, char **p);
 
 #endif
