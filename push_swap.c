@@ -34,7 +34,7 @@ void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
         a->len = ft_word(av[cnt.x], ' ') + a->len;
     a->arr = (int *)malloc(sizeof(int) * (a->len));
     b->arr = (int *)malloc(sizeof(int) * (a->len));
-    cnt.x = -1;
+    cnt.x = 0;
     while(++cnt.x < ac)
     {
         b->len = ft_word(av[cnt.x], ' ');
@@ -79,24 +79,52 @@ int check(int len, char **p)
     } 
     return 1;
 }
+void    test_number_doplicate(t_stack *a)
+{
+    int x = 0;
+    int y = 0;
+    int def;
+    while(x < a->len)
+    {
+        def = a->arr[x];
+        y = x + 1;
+        while(y < a->len)
+        {
+            if(a->arr[y] == def)
+            {
+                write(1, "Error\n", 6);
+                exit(1);
+            }
+            y++;
+        }
+        x++;
+    }
+}
+
+void range(t_stack *a, t_stack *b)
+{
+    
+}
 
 int main(int ac, char **av)
 {
     t_stack a;
     t_stack b;
-
+    //t_cnt   cnt;
     int x;
     if(ac > 1)
     {
         x = check(ac, av);
         if(x == 0)
         {
-            write(1, "error", 5);
+            write(1, "Error\n", 6);
             return 0;
         }
         else
             {
                 malloc_stack(&a , &b, ac, av);
+                test_number_doplicate(&a);
+                range(&a, &b);
             }
             x = 0;
     }
