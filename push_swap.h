@@ -24,6 +24,8 @@ typedef struct  s_stack
 }   t_stack;
 
 
+void ra(t_stack *a);
+void rb(t_stack *b);
 int check(int len, char **p);
 void malloc_stack(t_stack *a, t_stack *b, int ac, char **av);
 void    sa(t_stack *a);

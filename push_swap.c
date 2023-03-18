@@ -28,15 +28,16 @@ void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
     int x = 1;
     int y = 0;
     int i = 0;
-    int line_stack = 0;
     char **split;
+    
+    a->len = 0;
     while(x < ac)
     {
-        line_stack = ft_word(av[x], ' ') + line_stack;
+        a->len = ft_word(av[x], ' ') + a->len;
         x++;
     }
-    a->arr = (int *)malloc(sizeof(int) * (line_stack));
-    b->arr = (int *)malloc(sizeof(int) * (line_stack));
+    a->arr = (int *)malloc(sizeof(int) * (a->len));
+    b->arr = (int *)malloc(sizeof(int) * (a->len));
     x = 1;
     while(x < ac)
     {
@@ -58,6 +59,12 @@ void malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
         x++;
         b->len = 0;
     }
+    b->len = 4;
+    b->arr[0] = 1;
+    b->arr[1] = 2;
+    b->arr[2] = 3;
+    b->arr[3] = 4;
+    rb(b);
 }
 
 
