@@ -101,16 +101,37 @@ void    test_number_doplicate(t_stack *a)
     }
 }
 
+// void sort_3(t_stack *a)
+// {
+    
+// }
+
 void range(t_stack *a, t_stack *b)
 {
-    
+    int x = 0;
+    int cntr = 0;
+    int lst_cntr = 30;
+    while(x < a->len)
+    {
+        if(a->arr[x] >= cntr && a->arr[x] < lst_cntr)
+        {
+                write(1, "1", 1);
+                pb(a, b);
+                if(b->arr[0] > b->arr[1] && b->len > 1)
+                    sb(b);
+        }
+        else
+            ra(a);
+        cntr++;
+        lst_cntr++;
+    }
 }
 
 int main(int ac, char **av)
 {
     t_stack a;
     t_stack b;
-    //t_cnt   cnt;
+
     int x;
     if(ac > 1)
     {
@@ -124,9 +145,18 @@ int main(int ac, char **av)
             {
                 malloc_stack(&a , &b, ac, av);
                 test_number_doplicate(&a);
-                range(&a, &b);
+                //range(&a, &b);
+                x = 0;
+                while(x < a.len)
+                    printf("aa = %d\n", a.arr[x++]);
+                x = 0;
+                while(x < a.len)
+                {
+                    pb(&a, &b);
+                    x++;
+                }
+                //printf("%d\n", b.arr[0]);
             }
-            x = 0;
     }
     return 0;
 }

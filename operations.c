@@ -22,7 +22,7 @@ void sa(t_stack *a)
 		swap = a->arr[0];
 		a->arr[0] = a->arr[1];
 		a->arr[1] = swap;
-		write(1,"sa", 2);
+		write(1,"sa\n", 3);
 	}
 }
 
@@ -35,7 +35,7 @@ void	sb(t_stack *b)
 		nm_swap = b->arr[0];
 		b->arr[0] = b->arr[1];
 		b->arr[1] = nm_swap;
-		write(1,"sb", 2);
+		write(1,"sb\n", 3);
 	}
 }
 
@@ -43,7 +43,7 @@ void	ss(t_stack *a, t_stack *b)
 {
 	sa(a);
 	sb(b);
-	write(1,"ss", 2);
+	write(1,"ss\n", 3);
 }
 
 void	pa(t_stack *a, t_stack *b)
@@ -69,7 +69,7 @@ void	pa(t_stack *a, t_stack *b)
 		}
 		a->arr[1] = swap;
 		b->len--;
-		write(1,"pa", 2);
+		write(1,"pa\n", 3);
 	}
 }
 
@@ -77,27 +77,33 @@ void pb(t_stack *a, t_stack *b)
 {
 	int x;
 	int swap;
+	int swap_first;
+	x = 0;
+
 	if(a->len >= 1)
 	{
-		swap = b->arr[0];
-		x = b->len - 1;
-		while(x != 0)
-		{
-			b->arr[x + 1] = b->arr[x];
-			x--;
-		}
-		b->arr[0] = a->arr[0];
-		b->len++;
-		x = 0;
+		swap = a->arr[0];
+		swap_first = a->arr[x + 1];
 		while(x < a->len)
 		{
-			a->arr[x] = a->arr[x + 1];
+			a->arr[x] = swap_first;
 			x++;
+			swap_first = a->arr[x + 1];
 		}
-		b->arr[1] = swap;
-		a->len--;
-		write(1,"pb", 2);
 	}
+	a->len--;
+	x = b->len;
+	while(x >= 0)
+	{
+		b->arr[x] = b->arr[x + 1];
+		x--;
+	}
+	swap_first = b->arr[0];
+	b->arr[0] = swap;
+	// while(x < a->len)
+	// 	printf("%d\n", a->arr[x++]);
+	write(1,"pb\n", 3);
+	
 }
 
 void ra(t_stack *a)
@@ -115,7 +121,7 @@ void ra(t_stack *a)
 			x++;
 		}
 		a->arr[a->len - 1] = swap;
-		write(1,"ra", 2);
+		write(1,"ra\n", 3);
 	}
 }
 
@@ -134,7 +140,7 @@ void rb(t_stack *b)
 			x++;
 		}
 		b->arr[b->len - 1] = swap;
-		write(1,"rb", 2);
+		write(1,"rb\n", 3);
 	}
 }
 
@@ -142,7 +148,7 @@ void rr(t_stack *a, t_stack *b)
 {
 	ra(a);
 	rb(b);
-	write(1,"rr", 2);
+	write(1,"rr\n", 3);
 }
 
 void rra(t_stack *a)
@@ -162,7 +168,7 @@ void rra(t_stack *a)
 			x++;
 		}
 		a->arr[0] = swap_last;
-		write(1,"rra", 3);
+		write(1,"rra\n", 4);
 	}
 }
 
@@ -183,7 +189,7 @@ void rrb(t_stack *b)
 			x++;
 		}
 		b->arr[0] = swap_last;
-		write(1,"rrb", 3);
+		write(1,"rrb\n", 4);
 	}
 }
 
@@ -191,5 +197,5 @@ void rrr(t_stack *a, t_stack *b)
 {
 	rra(a);
 	rrb(b);
-	write(1,"rrr", 3);
+	write(1,"rrr\n", 4);
 }
