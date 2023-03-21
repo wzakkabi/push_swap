@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:07:03 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/16 01:29:37 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/20 22:56:19 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,36 @@ void	ss(t_stack *a, t_stack *b)
 	write(1,"ss\n", 3);
 }
 
-void	pa(t_stack *a, t_stack *b)
+void pa(t_stack *a, t_stack *b)
 {
 	int x;
 	int swap;
-	if(b->len >= 1)
+	int swap_first;
+	x = 0;
+
+	if(b->len > 0)
 	{
-		swap = a->arr[0];
-		x = a->len - 1;
-		while(x != 0)
+		swap = b->arr[0];
+		swap_first = b->arr[x + 1];
+		while(x < b->len)
+		{
+			b->arr[x] = swap_first;
+			x++;
+			swap_first = b->arr[x + 1];
+		}
+		b->len--;
+		x = a->len;
+		while(x >= 0)
 		{
 			a->arr[x + 1] = a->arr[x];
 			x--;
 		}
-		a->arr[0] = b->arr[0];
+		swap_first = a->arr[0];
+		a->arr[0] = swap;
 		a->len++;
-		x = 0;
-		while(x < b->len)
-		{
-			b->arr[x] = b->arr[x + 1];
-			x++;
-		}
-		a->arr[1] = swap;
-		b->len--;
 		write(1,"pa\n", 3);
 	}
+	
 }
 
 void pb(t_stack *a, t_stack *b)
@@ -80,7 +85,7 @@ void pb(t_stack *a, t_stack *b)
 	int swap_first;
 	x = 0;
 
-	if(a->len >= 1)
+	if(a->len > 0)
 	{
 		swap = a->arr[0];
 		swap_first = a->arr[x + 1];
@@ -90,20 +95,18 @@ void pb(t_stack *a, t_stack *b)
 			x++;
 			swap_first = a->arr[x + 1];
 		}
+		a->len--;
+		x = b->len;
+		while(x >= 0)
+		{
+			b->arr[x + 1] = b->arr[x];
+			x--;
+		}
+		swap_first = b->arr[0];
+		b->arr[0] = swap;
+		b->len++;
+		write(1,"pb\n", 3);
 	}
-	a->len--;
-	x = b->len;
-	while(x >= 0)
-	{
-		b->arr[x] = b->arr[x + 1];
-		x--;
-	}
-	swap_first = b->arr[0];
-	b->arr[0] = swap;
-	// while(x < a->len)
-	// 	printf("%d\n", a->arr[x++]);
-	write(1,"pb\n", 3);
-	
 }
 
 void ra(t_stack *a)

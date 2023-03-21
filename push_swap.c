@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:26:03 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/16 01:29:57 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/21 00:47:47 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,29 +101,96 @@ void    test_number_doplicate(t_stack *a)
     }
 }
 
-// void sort_3(t_stack *a)
-// {
-    
-// }
+int postion(t_stack *b, int *sort)
+{
+    int x = 0;
+     while(x < b->len)
+    {
+        if(b->arr[x] == sort[b->len - 1])
+            break;
+        x++;
+    }
+    return x;
+}
 
-void range(t_stack *a, t_stack *b)
+
+
+void range(t_stack *a, t_stack *b, int *sort)
 {
     int x = 0;
     int cntr = 0;
-    int lst_cntr = 30;
+    int lst_cntr = 3;
+    int size;
+    int len = a->len;
     while(x < a->len)
     {
-        if(a->arr[x] >= cntr && a->arr[x] < lst_cntr)
+        if((a->arr[x] >= sort[cntr] && a->arr[x] <= sort[lst_cntr]))
         {
-                write(1, "1", 1);
-                pb(a, b);
-                if(b->arr[0] > b->arr[1] && b->len > 1)
-                    sb(b);
+                pb(a, b); 
+            if(lst_cntr < len - 1)
+            {
+            cntr++;
+            lst_cntr++;
+            }
+        }
+        else if (a->arr[x] < sort[cntr])
+        {
+            pb(a,b);
+            rb(b);
+            if(lst_cntr < len - 1)
+            {
+            cntr++;
+            lst_cntr++;
+            }
+        }
+        else if(a->arr[x] > sort[lst_cntr])
+            ra(a);
+    }
+    x = 0;
+    while(b->len)
+    {
+        x = postion(b , sort);
+        if(x < (b->len / 2))
+        {
+            while(x != 0)
+            {
+                rb(b);
+                x--;
+            }
+            pa(a,b);
         }
         else
-            ra(a);
-        cntr++;
-        lst_cntr++;
+        {
+            while(x != b->len)
+            {
+                rrb(b);
+                x++;
+            }
+            pa(a,b);
+        }
+    }
+}
+void ft_sort(int *sort, t_stack *a)
+{
+    int x = 0;
+    int swap;
+    while(x < a->len)
+    {
+        sort[x] = a->arr[x];
+        x++;
+    }
+    x = 0;
+    while(x < a->len - 1)
+    {
+        if(sort[x] > sort[x + 1] && x < a->len)
+        {
+            swap = sort[x];
+            sort[x] = sort[x + 1];
+            sort[x + 1] = swap;
+            x = 0;
+        }
+        else
+            x++;
     }
 }
 
@@ -131,8 +198,9 @@ int main(int ac, char **av)
 {
     t_stack a;
     t_stack b;
-
+    int *sort;
     int x;
+
     if(ac > 1)
     {
         x = check(ac, av);
@@ -145,18 +213,17 @@ int main(int ac, char **av)
             {
                 malloc_stack(&a , &b, ac, av);
                 test_number_doplicate(&a);
-                //range(&a, &b);
-                x = 0;
-                while(x < a.len)
-                    printf("aa = %d\n", a.arr[x++]);
-                x = 0;
-                while(x < a.len)
-                {
-                    pb(&a, &b);
-                    x++;
-                }
-                //printf("%d\n", b.arr[0]);
+                sort = malloc(a.len * sizeof(int));
+                ft_sort(sort, &a);
+                range(&a, &b , sort);
             }
+            // x = 0;
+            // while(x < a.len)
+            //     printf("aa = %d\n", a.arr[x++]);
+
+            // x = 0;
+            // while(x < b.len)
+            //     printf("bb = %d\n", b.arr[x++]);
     }
     return 0;
 }
