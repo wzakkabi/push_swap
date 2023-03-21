@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:26:03 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/21 00:47:47 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/21 00:54:33 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void range(t_stack *a, t_stack *b, int *sort)
 {
     int x = 0;
     int cntr = 0;
-    int lst_cntr = 3;
+    int lst_cntr = 1;
     int size;
     int len = a->len;
     while(x < a->len)
@@ -217,9 +217,9 @@ int main(int ac, char **av)
                 ft_sort(sort, &a);
                 range(&a, &b , sort);
             }
-            // x = 0;
-            // while(x < a.len)
-            //     printf("aa = %d\n", a.arr[x++]);
+            x = 0;
+            while(x < a.len)
+                printf("aa = %d\n", a.arr[x++]);
 
             // x = 0;
             // while(x < b.len)
