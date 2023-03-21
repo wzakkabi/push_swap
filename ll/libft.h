@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 20:11:19 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/14 01:45:35 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:02:50 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int     ft_word(char const *s, char c);
+int		ft_word(char const *s, char c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strrchr(const char *s, int c);

@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:01:53 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/16 01:24:57 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:08:13 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,11 @@ void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 void	malloc_stack(t_stack *a, t_stack *b, int ac, char **av);
 int		check(int len, char **p);
-
+void free_malloc(char **p);
+void    test_number_doplicate(t_stack *a);
+int postion(t_stack *b, int *sort);
+void	ft_counter(int *first, int *last, t_stack *a);
+void range(t_stack *a, t_stack *b, int *sort);
+void ft_sort(int *sort, t_stack *a);
+void	ft_b_to_a(t_stack *a, t_stack *b, int *sort);
 #endif
