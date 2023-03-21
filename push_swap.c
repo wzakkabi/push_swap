@@ -113,13 +113,42 @@ int postion(t_stack *b, int *sort)
     return x;
 }
 
+void    ft_counter(int *first, int *last, t_stack *a)
+{
+    if (a->len == 2)
+    {
+        sa(a);
+        exit(0);
+    }
+    else if(a->len <= 3)
+    {
+        *first = 0;
+        *last = 1;
+    }
+    else if(a->len <= 5)
+    {
+        *first = 0;
+        *last = 1;
+    }
+    else if(a->len <= 100)
+    {
+        *first = 0;
+        *last = 15;
+    }
+    else
+    {
+        *first = 0;
+        *last = 45;
+    }
+}
 
 
 void range(t_stack *a, t_stack *b, int *sort)
 {
     int x = 0;
-    int cntr = 0;
-    int lst_cntr = 1;
+    int cntr;
+    int lst_cntr;
+    ft_counter(&cntr, &lst_cntr, a);
     int size;
     int len = a->len;
     while(x < a->len)
@@ -174,6 +203,7 @@ void ft_sort(int *sort, t_stack *a)
 {
     int x = 0;
     int swap;
+    int test = 0;
     while(x < a->len)
     {
         sort[x] = a->arr[x];
@@ -188,10 +218,13 @@ void ft_sort(int *sort, t_stack *a)
             sort[x] = sort[x + 1];
             sort[x + 1] = swap;
             x = 0;
+            test++;
         }
         else
             x++;
     }
+    if(test == 0)
+        exit(0);
 }
 
 int main(int ac, char **av)
@@ -217,9 +250,9 @@ int main(int ac, char **av)
                 ft_sort(sort, &a);
                 range(&a, &b , sort);
             }
-            x = 0;
-            while(x < a.len)
-                printf("aa = %d\n", a.arr[x++]);
+            // x = 0;
+            // while(x < a.len)
+            //     printf("aa = %d\n", a.arr[x++]);
 
             // x = 0;
             // while(x < b.len)
