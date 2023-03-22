@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzakkabi <wzakkabi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 15:22:21 by wzakkabi          #+#    #+#             */
-/*   Updated: 2022/10/19 02:13:00 by wzakkabi         ###   ########.fr       */
+/*   Created: 2022/09/30 21:53:59 by wzakkabi          #+#    #+#             */
+/*   Updated: 2023/03/21 23:30:51 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+size_t	ft_strlen(const char *s)
 {
-	size_t	cnt;
+	size_t	b;
 
-	cnt = 0;
-	while (cnt < len)
+	b = 0;
+	while (s[b] != '\0')
 	{
-		((unsigned char *)b)[cnt] = c;
-		cnt++;
+		b++;
 	}
 	return (b);
 }

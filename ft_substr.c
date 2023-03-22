@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzakkabi <wzakkabi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 22:25:12 by wzakkabi          #+#    #+#             */
-/*   Updated: 2022/10/17 19:50:05 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/21 23:30:48 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzakkabi <wzakkabi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 17:08:44 by wzakkabi          #+#    #+#             */
-/*   Updated: 2022/10/17 19:57:42 by wzakkabi         ###   ########.fr       */
+/*   Created: 2022/10/01 18:04:36 by wzakkabi          #+#    #+#             */
+/*   Updated: 2023/03/21 23:30:56 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	size_t	x;
 
 	x = 0;
 	while (x < n)
 	{
-		if (((unsigned char *)s)[x] == (unsigned char)c)
-			return (((unsigned char *)s) + x);
+		((unsigned char *)s)[x] = '\0';
 		x++;
 	}
-	return (NULL);
 }

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzakkabi <wzakkabi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:28:18 by wzakkabi          #+#    #+#             */
-/*   Updated: 2022/10/07 04:38:32 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/22 00:26:23 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, t_stack *aa, t_stack *bb)
 {
-	int	x;
-	int	a;
-	int	y;
+	int			x;
+	long int	a;
+	int			y;
 
 	y = 1;
 	a = 0;
@@ -30,9 +30,11 @@ int	ft_atoi(const char *str)
 		x++;
 	}
 	while (str[x] >= '0' && str[x] <= '9')
+		a = a * 10 + (str[x++] - 48);
+	if ((a * y) > 2147483647 || (a * y) < -2147483648)
 	{
-		a = a * 10 + (str[x] - 48);
-		x++;
+		write(2, "Error\n", 6);
+		free_all(aa, bb);
 	}
 	return (a * y);
 }

@@ -6,11 +6,11 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 20:39:24 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/14 01:45:46 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/21 23:30:42 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int	ft_word(char const *s, char c)
 {

@@ -10,7 +10,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	gcc *.c libft.a -o $(NAME)
+	gcc *.c -o $(NAME)
 
 %.o : %.c
 	gcc $(FLAGS) -c $<

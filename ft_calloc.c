@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzakkabi <wzakkabi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 03:56:12 by wzakkabi          #+#    #+#             */
-/*   Updated: 2022/10/09 04:13:40 by wzakkabi         ###   ########.fr       */
+/*   Created: 2022/10/03 23:11:19 by wzakkabi          #+#    #+#             */
+/*   Updated: 2023/03/21 23:30:54 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	*p;
+	void	*p;
 
-	if (!s1 || !s2)
-		return (NULL);
-	p = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, 1);
+	p = malloc(count * size);
 	if (!p)
 		return (NULL);
-	ft_memmove(p, s1, ft_strlen(s1));
-	ft_memmove(p + ft_strlen(s1), s2, ft_strlen(s2));
+	ft_bzero(p, (count * size));
 	return (p);
 }

@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:30:04 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/21 17:07:49 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/22 01:27:00 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,74 @@ void	ft_sort(int *sort, t_stack *a)
 	if (test == 0)
 		exit(0);
 }
-
-void	ft_counter(int *first, int *last, t_stack *a)
+void ft_sort5(t_stack *a, t_stack *b)
 {
-	if (a->len == 2)
+	int *sort;
+	int x = 0;
+	//int y = 0;
+	sort = malloc(a->len * sizeof(int));
+	ft_sort(sort, a);
+	while(a->len != 3)
+	{
+		x = postion(a , sort);
+		if(x <= a->len / 2)
+		{
+			while( x != 0)
+			{
+				ra(a);
+				x--;
+			}
+			pb(a,b);
+		}
+		else
+		{
+			if(x > a->len / 2)
+			{
+				while(x < a->len)
+				{
+					rra(a);
+					x++;
+				}
+				pb(a, b);
+			}
+		}
+	}
+	ft_sort3(a);
+	while(b->len)
+	{
+		pa(a, b);
+		ra(a);
+	}
+}
+
+void ft_sort3(t_stack *a)
+{
+	if (a->arr[0] > a->arr[1] && a->arr[2] > a->arr[0] && a->arr[2] > a->arr[1])
+		sa(a);
+	else if (a->arr[0] > a->arr[1] && a->arr[0] > a->arr[2] && a->arr[1] > a->arr[2])
 	{
 		sa(a);
-		exit(0);
+		rra(a);
 	}
-	else if (a->len <= 3)
+	else if (a->arr[0] > a->arr[2] && a->arr[0] > a->arr[1] && a->arr[1] < a->arr[2])
+		ra(a);
+	else if (a->arr[0] < a->arr[1] && a->arr[1] > a->arr[2] && a->arr[0] < a->arr[2])
 	{
-		*first = 0;
-		*last = 1;
+		sa(a);
+		ra(a);
 	}
-	else if (a->len <= 10)
-	{
-		*first = 0;
+	else if(a->arr[0] < a->arr[1] && a->arr[0] > a->arr[2] && a->arr[2] < a->arr[1])
+			rra(a);
+}
+
+void	ft_counter(int *last, t_stack *a)
+{
+	if (a->len <= 15)
 		*last = 1;
-	}
 	else if (a->len <= 100)
-	{
-		*first = 0;
 		*last = 15;
-	}
 	else
-	{
-		*first = 0;
-		*last = 45;
-	}
+		*last = 30;
 }
 
 int	postion(t_stack *b, int *sort)
@@ -117,8 +157,9 @@ void	range(t_stack *a, t_stack *b, int *sort)
 	int	lst_cntr;
 	int	len;
 
+	cntr = 0;
 	len = a->len;
-	ft_counter(&cntr, &lst_cntr, a);
+	ft_counter(&lst_cntr, a);
 	while (a->len)
 	{
 		if ((a->arr[0] >= sort[cntr] && a->arr[0] <= sort[lst_cntr]))
