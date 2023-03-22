@@ -6,65 +6,14 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:26:03 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/22 01:42:02 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:50:46 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "push_swap.h"
 
-
-void	free_malloc(char **p)
+int	check(int len, char **p, int x, int y)
 {
-	int x;
-
-	x = 0;
-	while (p[x])
-		free(p[x++]);
-	free(p);
-}
-
-void	malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
-{
-	t_cnt	cnt;
-	char	**split;
-
-	cnt.x = ((cnt.y = 0), (cnt.i = 0), (a->len = 0), 0);
-	while (++cnt.x < ac)
-		a->len = ft_word(av[cnt.x], ' ') + a->len;
-	a->arr = (int *)malloc(sizeof(int) * (a->len));
-	b->arr = (int *)malloc(sizeof(int) * (a->len));
-	cnt.x = 0;
-	while (++cnt.x < ac)
-	{
-		b->len = ft_word(av[cnt.x], ' ');
-		if (b->len == 1)
-			a->arr[cnt.i++] = ft_atoi(av[cnt.x], a, b);
-		else
-		{
-			split = ft_split(av[cnt.x], ' ');
-			cnt.y = -1;
-			while (split[++cnt.y])
-				a->arr[cnt.i++] = ft_atoi(split[cnt.y], a, b);
-			free_malloc(split);
-		}
-		b->len = 0;
-	}
-}
-void free_all(t_stack *a, t_stack *b)
-{
-	free(a->arr);
-	free(b->arr);
-	exit(1);
-}
-
-int	check(int len, char **p)
-{
-	int	x;
-	int	y;
-
-	y = 1;
 	while (y < len)
 	{
 		x = 0;
@@ -81,7 +30,7 @@ int	check(int len, char **p)
 			|| (p[y][x] == '-' && p[y][x + 1] <= '9' && p[y][x + 1] >= '0'))
 			{
 				if (p[y][x - 1] < '9' && p[y][x - 1] > '0')
-					return 0;
+					return (0);
 				x++;
 			}
 			else
@@ -92,6 +41,34 @@ int	check(int len, char **p)
 	return (1);
 }
 
+void	range(t_stack *a, t_stack *b, int *sort)
+{
+	int	cntr;
+	int	lst_cntr;
+	int	len;
+
+	cntr = ((len = a->len), 0);
+	ft_counter(&lst_cntr, a, b);
+	while (a->len)
+	{
+		if ((a->arr[0] >= sort[cntr] && a->arr[0] <= sort[lst_cntr]))
+		{
+			pb(a, b);
+			if (lst_cntr < len - 1)
+				cntr = ((lst_cntr++), cntr + 1);
+		}
+		else if (a->arr[0] < sort[cntr])
+		{
+			pb(a, b);
+			rb(b);
+			if (lst_cntr < len - 1)
+				cntr = ((lst_cntr++), cntr + 1);
+		}
+		else if (a->arr[0] > sort[lst_cntr])
+			ra(a);
+	}
+	ft_b_to_a(a, b, sort);
+}
 
 void	test_number_doplicate(t_stack *a, t_stack *b)
 {
@@ -117,9 +94,18 @@ void	test_number_doplicate(t_stack *a, t_stack *b)
 	}
 }
 
+void	push_swap(t_stack *a, t_stack *b, int ac, char **av)
+{
+	int	*sort;
 
+	malloc_stack(a, b, ac, av);
+	test_number_doplicate(a, b);
+	sort = malloc(a->len * sizeof(int));
+	ft_sort(sort, a);
+	range(a, b, sort);
+}
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_stack	a;
 	t_stack	b;
@@ -128,51 +114,19 @@ int main(int ac, char **av)
 
 	if (ac >= 1)
 	{
-		x = check(ac, av);
+		x = check(ac, av, 0, 1);
 		if (x == 0)
 		{
 			write(2, "Error\n", 6);
 			return (1);
 		}
 		else
-			{
-				malloc_stack(&a , &b, ac, av);
-				test_number_doplicate(&a, &b);
-				sort = malloc(a.len * sizeof(int));
-				ft_sort(sort, &a);
-				if(a.len == 2)
-				{
-					sa(&a);
-					exit(0);
-				}
-				else if (a.len <= 3)
-				{
-					ft_sort3(&a);
-					free(a.arr);
-					free(b.arr);
-					exit(1);
-				}
-				else if (a.len <= 5)
-				{
-					ft_sort5(&a, &b);
-					free(a.arr);
-					free(b.arr);
-					exit(1);
-				}
-				range(&a, &b , sort);
-			}
-			// x = 0;
-			// while(x < a.len)
-			//     printf("aa = %d\n", a.arr[x++]);
-
-			// x = 0;
-			// while(x < b.len)
-			//     printf("bb = %d\n", b.arr[x++]);
+			push_swap(&a, &b, ac, av);
 	}
 	else
 	{
 		write(2, "Error\n", 6);
-		exit(1);
+		return (1);
 	}
 	return (0);
 }
