@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:28:18 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/22 00:26:23 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:41:44 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_atoi(const char *str, t_stack *aa, t_stack *bb)
 	if ((a * y) > 2147483647 || (a * y) < -2147483648)
 	{
 		write(2, "Error\n", 6);
-		free_all(aa, bb);
+		free_all(aa, bb, NULL);
 	}
 	return (a * y);
 }

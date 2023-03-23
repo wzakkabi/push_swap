@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:52:31 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/22 19:54:28 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/23 01:37:52 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,13 @@ void	free_malloc(char **p)
 }
 
 
-void free_all(t_stack *a, t_stack *b)
+void	free_all(t_stack *a, t_stack *b, int *sort)
 {
+	if (sort != NULL)
+		free(sort);
 	free(a->arr);
 	free(b->arr);
-	exit(1);
+	exit(0);
 }
 
 int	postion(t_stack *b, int *sort)
@@ -93,10 +95,11 @@ void	ft_b_to_a(t_stack *a, t_stack *b, int *sort)
 		{
 			while (x != b->len)
 			{
-				rrb(b);
+				rrb(b, 1);
 				x++;
 			}
 			pa(a, b);
 		}
 	}
+	free_all(a, b, sort);
 }

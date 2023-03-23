@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:01:53 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/22 19:49:39 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/23 01:56:16 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,22 @@ void	pb(t_stack *a, t_stack *b);
 void	ra(t_stack *a);
 void	rb(t_stack *b);
 void	rr(t_stack *a, t_stack *b);
-void	rra(t_stack *a);
-void	rrb(t_stack *b);
+void	rra(t_stack *a, int ww);
+void	rrb(t_stack *b, int ww);
 void	rrr(t_stack *a, t_stack *b);
 
 //push_swap function
 void	malloc_stack(t_stack *a, t_stack *b, int ac, char **av);
-int	check(int len, char **p, int x, int y);
+int		check(int len, char **p, int x, int y);
 void	free_malloc(char **p);
 void	test_number_doplicate(t_stack *a, t_stack *b);
 int		postion(t_stack *b, int *sort);
-void	ft_counter(int *last, t_stack *a, t_stack *b);
+void	ft_counter(int *last, t_stack *a, t_stack *b, int *sort);
 void	range(t_stack *a, t_stack *b, int *sort);
-void	ft_sort(int *sort, t_stack *a);
+void	ft_sort(int *sort, t_stack *a, t_stack *b);
 void	ft_b_to_a(t_stack *a, t_stack *b, int *sort);
 void	ft_sort3(t_stack *a);
 void	ft_sort5(t_stack *a, t_stack *b);
-void	free_all(t_stack *a, t_stack *b);
+void	free_all(t_stack *a, t_stack *b, int *sort);
 void	push_swap(t_stack *a, t_stack *b, int ac, char **av);
 #endif
