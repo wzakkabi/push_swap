@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:52:31 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/23 01:37:52 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/23 02:01:40 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,13 @@ void	malloc_stack(t_stack *a, t_stack *b, int ac, char **av)
 
 void	free_malloc(char **p)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (p[x])
 		free(p[x++]);
 	free(p);
 }
-
 
 void	free_all(t_stack *a, t_stack *b, int *sort)
 {
@@ -74,11 +73,8 @@ int	postion(t_stack *b, int *sort)
 	return (x);
 }
 
-void	ft_b_to_a(t_stack *a, t_stack *b, int *sort)
+void	ft_b_to_a(t_stack *a, t_stack *b, int *sort, int x)
 {
-	int	x;
-
-	x = 0;
 	while (b->len)
 	{
 		x = postion(b, sort);

@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:26:03 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/23 01:20:01 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/23 02:00:37 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void range(t_stack *a, t_stack *b, int *sort)
 		else if (a->arr[0] > sort[lst_cntr])
 			ra(a);
 	}
-	ft_b_to_a(a, b, sort);
+	ft_b_to_a(a, b, sort, 0);
 }
 
 void test_number_doplicate(t_stack *a, t_stack *b)

@@ -6,7 +6,7 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:01:53 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/23 01:56:16 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/23 02:01:16 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		postion(t_stack *b, int *sort);
 void	ft_counter(int *last, t_stack *a, t_stack *b, int *sort);
 void	range(t_stack *a, t_stack *b, int *sort);
 void	ft_sort(int *sort, t_stack *a, t_stack *b);
-void	ft_b_to_a(t_stack *a, t_stack *b, int *sort);
+void	ft_b_to_a(t_stack *a, t_stack *b, int *sort, int x);
 void	ft_sort3(t_stack *a);
 void	ft_sort5(t_stack *a, t_stack *b);
 void	free_all(t_stack *a, t_stack *b, int *sort);
