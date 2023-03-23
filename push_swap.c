@@ -6,13 +6,13 @@
 /*   By: wzakkabi <wzakkabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:26:03 by wzakkabi          #+#    #+#             */
-/*   Updated: 2023/03/23 02:00:37 by wzakkabi         ###   ########.fr       */
+/*   Updated: 2023/03/23 02:05:47 by wzakkabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int check(int len, char **p, int x, int y)
+int	check(int len, char **p, int x, int y)
 {
 	while (y < len)
 	{
@@ -25,7 +25,9 @@ int check(int len, char **p, int x, int y)
 		{
 			if ((p[y][x] <= '9' && p[y][x] >= '0') || p[y][x] == ' ')
 				x++;
-			else if ((p[y][x] == '+' && p[y][x + 1] <= '9' && p[y][x + 1] >= '0') || (p[y][x] == '-' && p[y][x + 1] <= '9' && p[y][x + 1] >= '0'))
+			else if ((p[y][x] == '+' && p[y][x + 1] <= '9' &&
+			p[y][x + 1] >= '0')
+				|| (p[y][x] == '-' && p[y][x + 1] <= '9' && p[y][x + 1] >= '0'))
 			{
 				if (p[y][x - 1] <= '9' && p[y][x - 1] >= '0')
 					return (0);
@@ -39,11 +41,11 @@ int check(int len, char **p, int x, int y)
 	return (1);
 }
 
-void range(t_stack *a, t_stack *b, int *sort)
+void	range(t_stack *a, t_stack *b, int *sort)
 {
-	int cntr;
-	int lst_cntr;
-	int len;
+	int	cntr;
+	int	lst_cntr;
+	int	len;
 
 	cntr = ((len = a->len), 0);
 	ft_counter(&lst_cntr, a, b, sort);
@@ -68,11 +70,11 @@ void range(t_stack *a, t_stack *b, int *sort)
 	ft_b_to_a(a, b, sort, 0);
 }
 
-void test_number_doplicate(t_stack *a, t_stack *b)
+void	test_number_doplicate(t_stack *a, t_stack *b)
 {
-	int x;
-	int y;
-	int def;
+	int	x;
+	int	y;
+	int	def;
 
 	x = ((y = 0), 0);
 	while (x < a->len)
@@ -92,9 +94,9 @@ void test_number_doplicate(t_stack *a, t_stack *b)
 	}
 }
 
-void push_swap(t_stack *a, t_stack *b, int ac, char **av)
+void	push_swap(t_stack *a, t_stack *b, int ac, char **av)
 {
-	int *sort;
+	int	*sort;
 
 	malloc_stack(a, b, ac, av);
 	test_number_doplicate(a, b);
@@ -103,11 +105,12 @@ void push_swap(t_stack *a, t_stack *b, int ac, char **av)
 	range(a, b, sort);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_stack a;
-	t_stack b;
-	int x;
+	t_stack	a;
+	t_stack	b;
+	int		x;
+
 	if (ac >= 1)
 	{
 		x = check(ac, av, 0, 1);
